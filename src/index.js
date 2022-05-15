@@ -9,12 +9,12 @@ const onClickAdd = () => {
   const div = document.createElement("div");
   div.className = "list-row";
 
-  //li生成
+  //li生成 DOM
   const li = document.createElement("li");
   li.innerText = inputText;
 
   //divタグの子要素に各要素を設定
-  div.appendChild(li);
+  div.appendChild(li); //liをdivの子要素にする
   console.log(div);
 
   //未完了のリストに追加
