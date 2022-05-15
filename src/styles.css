@@ -12,6 +12,15 @@ input {
 button {
   border-radius: 16px;
   border: none;
+  padding: 4px 16px;
+}
+button:hover {
+  background-color: #ff7fff;
+  color: #fff; /*カーソルを上に持っていったときの文字の色が変わる*/
+  cursor: pointer; /*クリックするときのポインターがわかりやすいものになる*/
+}
+li {
+  margin-right: 8px;
 }
 
 .input-area {
@@ -37,4 +46,17 @@ button {
   padding: 8px;
   margin: 8px;
   border-radius: 8px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 0;
+  font-weight: bold; /*文字を太字にする*/
+  color: #666; /*太字の主張が強いから色の調整*/
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
 }
