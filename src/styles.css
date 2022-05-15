@@ -1,12 +1,40 @@
 body {
   font-family: sans-serif;
 }
+
+input {
+  border-radius: 16px;
+  border: none; /*入力部分の枠線がいらないから消す*/
+  padding: 6px 16px;
+  outline: none; /*入力のときに、線がまわりに出ていたがそれを消せる*/
+}
+
+button {
+  border-radius: 16px;
+  border: none;
+}
+
 .input-area {
   background-color: #c1ffff;
+  width: 400px;
+  height: 30px;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
 }
 .imcompleted-area {
   background-color: #c6ffe2;
+  width: 400px;
+  min-height: 200px; /* 高さを指定してしまうと崩れるからこれを使っている*/
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
 }
 .completed-area {
   background-color: #ffffe0;
+  width: 400px;
+  min-height: 200px; /* 高さを指定してしまうと崩れるからこれを使っている*/
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
 }
