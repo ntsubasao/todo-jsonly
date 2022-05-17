@@ -38,6 +38,9 @@ const onClickAdd = () => {
     //buttonタグ生成
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
+    backButton.addEventListener("click" , () => {
+      alert("戻す");
+    }
 
     //divタグの子要素に各要素を設定
     addTarget.appendChild(li);
