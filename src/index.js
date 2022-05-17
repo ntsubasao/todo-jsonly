@@ -30,7 +30,6 @@ const onClickAdd = () => {
 
     //div以下を初期化
     addTarget.textContent = null;
-    console.log(addTarget);
 
     //liタグ生成
     const li = document.createElement("li");
