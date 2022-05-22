@@ -17,14 +17,28 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    //完了リストに追加する要素
+    const addTarget = completeButton.parentNode; //まずはdivから/divまでの要素を取得
+    const text = addTarget.firstElementChild.innerText; //div要素の子要素の一番初めだから、firstelementchildを使う
+
+    //div生成　DOM
+    const div = document.createElement("div");
+    div.className = "list-row"; //classを付与する
+
+    //li生成 DOM
+    const li = document.createElement("li");
+    li.innerText = text; //中身をliタグの中に値を入れられる
+
+    //押された完了ボタンの親タグを変数に入れる
+    deleteFromIncompleteList(completeButton.parentNode);
   });
 
   //button（削除）作成
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
-    alert("削除");
+    //押された削除ボタンの親タグ（div）を未完了リストから削除ボタン
+    deleteFromIncompleteList(deleteButton.parentNode);
   });
 
   //divタグの子要素に各要素を設定(appendchildはどんどん下に追加される)
@@ -35,6 +49,11 @@ const onClickAdd = () => {
   //未完了リストに追加 （incomplete-list の子要素に）
   document.getElementById("incomplete-list").appendChild(div);
 };
+
+//未完了リストから指定の要素を削除(関数化)
+const deleteFromIncompleteList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
+}; //tagetを引数として、対象を受け取って削除する関数
 
 document
   .getElementById("add-button") //idにマッチするDocument要素を取得する
