@@ -25,9 +25,24 @@ const onClickAdd = () => {
     //TODO内容テキストを取得
     const text = addTarget.firstElementChild.innerText; //div要素の子要素の一番初めだから、firstelementchildを使う
 
-    //div以下を初期化
+    //div以下を初期化(divタグの中身にliとかbuttonが入っていてそれをtextcontentと見立てているから消える)
     addTarget.textContent = null;
     console.log(addTarget);
+
+    //liタグを生成
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    //buttonタグ生成
+    const bacuButton = document.createElement("button");
+    bacuButton.innerText = "戻す";
+
+    //divタグの子要素に各要素を設定
+    addTarget.appendChild(li);
+    addTarget.appendChild(bacuButton);
+
+    //完了リストに追加
+    document.getElementById("complete-list").appendChild(addTarget);
   });
 
   //button（削除）作成
