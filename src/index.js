@@ -17,20 +17,17 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
+    //押された完了ボタンの親タグを変数に入れる(いろいろ作ったあとに消すとどれ消すかわからなくなるから上)
+    deleteFromIncompleteList(completeButton.parentNode);
     //完了リストに追加する要素
     const addTarget = completeButton.parentNode; //まずはdivから/divまでの要素を取得
+
+    //TODO内容テキストを取得
     const text = addTarget.firstElementChild.innerText; //div要素の子要素の一番初めだから、firstelementchildを使う
 
-    //div生成　DOM
-    const div = document.createElement("div");
-    div.className = "list-row"; //classを付与する
-
-    //li生成 DOM
-    const li = document.createElement("li");
-    li.innerText = text; //中身をliタグの中に値を入れられる
-
-    //押された完了ボタンの親タグを変数に入れる
-    deleteFromIncompleteList(completeButton.parentNode);
+    //div以下を初期化
+    addTarget.textContent = null;
+    console.log(addTarget);
   });
 
   //button（削除）作成
