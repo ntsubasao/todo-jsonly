@@ -5,13 +5,23 @@ const onClickAdd = () => {
   const inputText = document.getElementById("add-text").value; //inputに入力された値だから、valueを使
   document.getElementById("add-text").value = ""; //inputTextの内容を空にする
 
+  createIncompleteList(inputText);
+};
+
+//未完了リストから指定の要素を削除(関数化)
+const deleteFromIncompleteList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
+}; //tagetを引数として、対象を受け取って削除する関数
+
+//未完了リストに追加する関数
+const createIncompleteList = (text) => {
   //div生成　DOM
   const div = document.createElement("div");
   div.className = "list-row"; //classを付与する
 
   //li生成 DOM
   const li = document.createElement("li");
-  li.innerText = inputText; //中身をliタグの中に値を入れられる
+  li.innerText = text; //中身をliタグの中に値を入れられる
 
   //button（完了）作成
   const completeButton = document.createElement("button");
@@ -34,12 +44,21 @@ const onClickAdd = () => {
     li.innerText = text;
 
     //buttonタグ生成
-    const bacuButton = document.createElement("button");
-    bacuButton.innerText = "戻す";
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+    backButton.addEventListener("click", () => {
+      //押された戻すボタンの親タグを完了リストから削除
+      const deleteTarget = backButton.parentNode;
+      document.getElementById("complete-list").removeChild(deleteTarget);
+
+      //テキスト取得
+      const text = backButton.parentNode.firstElementChild.innerText;
+      createIncompleteList(text); //関数化したやつ(関数化しなかったら、もう一回あの長いコードを入れる必要があったから関数化してよかった)
+    });
 
     //divタグの子要素に各要素を設定
     addTarget.appendChild(li);
-    addTarget.appendChild(bacuButton);
+    addTarget.appendChild(backButton);
 
     //完了リストに追加
     document.getElementById("complete-list").appendChild(addTarget);
@@ -61,11 +80,6 @@ const onClickAdd = () => {
   //未完了リストに追加 （incomplete-list の子要素に）
   document.getElementById("incomplete-list").appendChild(div);
 };
-
-//未完了リストから指定の要素を削除(関数化)
-const deleteFromIncompleteList = (target) => {
-  document.getElementById("incomplete-list").removeChild(target);
-}; //tagetを引数として、対象を受け取って削除する関数
 
 document
   .getElementById("add-button") //idにマッチするDocument要素を取得する
